@@ -14,13 +14,11 @@ public class GaussJordan
 	 */
 	public GaussJordan(int rows, int columns)
 	{
-		int [] [] matrix = new int [rows] [columns];
+		matrix = new int [rows] [columns];
 		//fill matrix
 		
 		//for testing purposes, use a matrix:
 		//int[][] matrix = new int[][] {{0,2,1,-1},{0,0,3,1},{0,0,0,0}};
-		
-		
 	}
 	
 	/**
@@ -29,11 +27,11 @@ public class GaussJordan
 	 * @param row1, the first row to be swapped
 	 * @param row2, the second row to be swapped
 	 */
-	public void swap(int[][] aMatrix, int row1, int row2)
+	public void swap(int row1, int row2)
 	{
-		int[] temp = aMatrix[row1];
-		aMatrix[row1] = aMatrix[row2];
-		aMatrix[row2] = temp;
+		int[] temp = matrix[row1];
+		matrix[row1] = matrix[row2];
+		matrix[row2] = temp;
 	}
 	
 	/**
@@ -42,11 +40,11 @@ public class GaussJordan
 	 * @param row, the row to be multiplied
 	 * @param scalar, the number by which the row is multiplied
 	 */
-	public void mult(int[][] aMatrix, int row, int scalar)
+	public void mult( int row, int scalar)
 	{
-		for (int i = 0; i < aMatrix[row].length; i++)
+		for (int i = 0; i < matrix[row].length; i++)
 		{
-			aMatrix[row][i] = scalar * aMatrix[row][i];
+			matrix[row][i] = scalar * matrix[row][i];
 		}
 		
 	}
@@ -58,18 +56,41 @@ public class GaussJordan
 	 * @param row2, the row to be multiplied and added to the other
 	 * @param scalar, the number by which row2 is multiplied
 	 */
-	public void addTo(int[][] aMatrix, int row1, int row2, int scalar)
+	public void addTo(int row1, int row2, int scalar)
 	{
 	
-		for (int i = 0; i < aMatrix[row2].length; i++)
+		for (int i = 0; i < matrix[row2].length; i++)
 		{
-			aMatrix[row2][i] = scalar * aMatrix[row2][i];
+			matrix[row2][i] = scalar * matrix[row2][i];
 		}
 		
-		for (int i = 0; i < aMatrix[row1].length; i++)
+		for (int i = 0; i < matrix[row1].length; i++)
 		{
-			aMatrix[row1][i] += aMatrix[row2][i];
+			matrix[row1][i] += matrix[row2][i];
 		}
 	}
+	/**
+	 * sets the value of the matrix at a given index
+	 * @param a the row index to set value
+	 * @param b the column index to set value
+	 * @param value, the value to be set
+	 */
+	public void setValue(int a, int b, int value)
+	{
+		matrix[a][b] = value;
+	}
+	
+	/**
+	 * returns the value of the matrix at a given index
+	 * @param a the row index to get value
+	 * @param b the column index to get value
+	 * @return the value of the matrix at that index
+	 */
+	public int getValue(int a, int b)
+	{
+		return matrix[a][b];
+	}
+	
+	int[][] matrix;
 
 }
