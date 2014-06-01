@@ -52,34 +52,54 @@ public class GaussJordanTest
 			}	
 			if (zeroCounter == columns)
 			{
-				aMatrix.swap(l, rows);
+				aMatrix.swap(l, rows-1);
 			}
 			zeroCounter = 0;
 			
 		}	
 		
 		
-		/**
-		 * Then, make sure that the leftmost nonzero entry is a 1
-		 * (leading 1)	
-		 * If it is not, divide the row so that it is
-		 */
-		for (int l = 0; l < rows; l++)
-		{
-			int k = 0;
-			double scalar;
-			do
-			{
-				if (aMatrix.getValue(l,k) != 0 && aMatrix.getValue(l,k) != 1)
-				{
-					scalar = 1/aMatrix.getValue(l,k);
-					aMatrix.mult(l, scalar);
-				}	
-				k++;	
-			}	
-			while (aMatrix.getValue(l,k) == 0);
-		}	
-			
+//		/**
+//		 * Scan columns for first nonzero entry. Identify the column which contains it. 
+//		 * Look for the top nonzero entry in the column
+//		 * If it's not in the first row, swap rows
+//		 */
+//		//for (int i = 0; i < columns; i++)
+//		int i = 0;
+//		int j = 0;
+//		do
+//		{
+////			for (int j = 0; j < rows; j++)
+//			{
+//				if (aMatrix.getValue(j, i) != 0)
+//				{
+//					aMatrix.swap(1, j);
+//				}	
+//			}
+//			
+//		} while (aMatrix.getValue(j, i) != 0);
+//		
+//		/**
+//		 * Then, make sure that the leftmost nonzero entry is a 1
+//		 * (leading 1)	
+//		 * If it is not, divide the row so that it is
+//		 */
+//		for (int l = 0; l < rows; l++)
+//		{
+//			int k = 0;
+//			double scalar;
+//			do
+//			{
+//				if (aMatrix.getValue(l,k) != 0 && aMatrix.getValue(l,k) != 1)
+//				{
+//					scalar = 1/aMatrix.getValue(l,k);
+//					aMatrix.mult(l, scalar);
+//				}	
+//				k++;	
+//			}	
+//			while (aMatrix.getValue(l,k) == 0);
+//		}	
+//			
 			
 		/**
 		 * Then ensure that each *column* containing a leading 1 
