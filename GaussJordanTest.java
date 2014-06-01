@@ -4,7 +4,8 @@
  *
  */
 import java.util.Scanner;
-public class GaussJordanTest {
+public class GaussJordanTest 
+{
 	
 	public static void main(String[] args)
 	{
@@ -54,11 +55,29 @@ public class GaussJordanTest {
 				}
 				zeroCounter = 0;
 			}
+		}	
 		
 		/**
 		 * Then, make sure that the leftmost nonzero entry is a 1
 		 * (leading 1)	
+		 * If it is not, divide the row so that it is
 		 */
+		for (int l = 0; l < rows; l++)
+		{
+			int k = 0;
+			double scalar;
+			do
+			{
+				if (aMatrix.getValue(l,k) != 0 && aMatrix.getValue(l,k) != 1)
+				{
+					scalar = 1/aMatrix.getValue(l,k);
+					aMatrix.mult(l, scalar);
+				}	
+				k++;	
+			}	
+			while (aMatrix.getValue(l,k) == 0);
+		}	
+			
 			
 		/**
 		 * Then ensure that each *column* containing a leading 1 
@@ -69,9 +88,12 @@ public class GaussJordanTest {
 		 * Then ensure that the leading 1 in any row is to the left of the
 		 * leading 1's below it	
 		 */
-			
 		
-		}
+			
+			
+			
+		in.close();
+		
 	}
-
+	
 }

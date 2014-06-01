@@ -14,7 +14,7 @@ public class AugmentedMatrix
 	 */
 	public AugmentedMatrix(int rows, int columns)
 	{
-		matrix = new int [rows] [columns];
+		matrix = new double [rows] [columns];
 		
 		
 		//for testing purposes, use a matrix:
@@ -29,7 +29,7 @@ public class AugmentedMatrix
 	 */
 	public void swap(int row1, int row2)
 	{
-		int[] temp = matrix[row1];
+		double[] temp = matrix[row1];
 		matrix[row1] = matrix[row2];
 		matrix[row2] = temp;
 	}
@@ -86,11 +86,11 @@ public class AugmentedMatrix
 	 * @param b the column index to get value
 	 * @return the value of the matrix at that index
 	 */
-	public int getValue(int a, int b)
+	public double getValue(int a, int b)
 	{
 		return matrix[a][b];
 	}
 	
-	int[][] matrix;
+	double[][] matrix;
 
 }
