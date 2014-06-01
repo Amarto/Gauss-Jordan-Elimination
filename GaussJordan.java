@@ -31,7 +31,9 @@ public class GaussJordan
 	 */
 	public void swap(int[][] aMatrix, int row1, int row2)
 	{
-		
+		int[] temp = aMatrix[row1];
+		aMatrix[row1] = aMatrix[row2];
+		aMatrix[row2] = temp;
 	}
 	
 	/**
@@ -42,6 +44,10 @@ public class GaussJordan
 	 */
 	public void mult(int[][] aMatrix, int row, int scalar)
 	{
+		for (int i = 0; i < aMatrix[row].length; i++)
+		{
+			aMatrix[row][i] = scalar * aMatrix[row][i];
+		}
 		
 	}
 	
@@ -54,7 +60,16 @@ public class GaussJordan
 	 */
 	public void addTo(int[][] aMatrix, int row1, int row2, int scalar)
 	{
+	
+		for (int i = 0; i < aMatrix[row2].length; i++)
+		{
+			aMatrix[row2][i] = scalar * aMatrix[row2][i];
+		}
 		
+		for (int i = 0; i < aMatrix[row1].length; i++)
+		{
+			aMatrix[row1][i] += aMatrix[row2][i];
+		}
 	}
 
 }
