@@ -18,7 +18,7 @@ public class GaussJordanTest {
 		int rows = in.nextInt();
 		System.out.println("Please enter the number of columns: ");
 		int columns = in.nextInt();
-		GaussJordan aMatrix = new GaussJordan(rows, columns);
+		AugmentedMatrix aMatrix = new AugmentedMatrix(rows, columns);
 		
 		/**
 		 * Fill the matrix with values from user input
