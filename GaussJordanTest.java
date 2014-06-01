@@ -17,7 +17,7 @@ public class GaussJordanTest {
 		
 		for (int l = 0; l < i; l++)
 		{
-		System.out.println("Please enter the elements of row " + l 
+		System.out.println("Please enter the elements of row " + (l+1) 
 				+ " one by one");
 			for (int k = 0; k < j; k++)
 			{
@@ -25,6 +25,7 @@ public class GaussJordanTest {
 			aMatrix.setValue(l, k, value);
 			}
 			
+		
 		
 		}
 	}
