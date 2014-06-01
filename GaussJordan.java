@@ -1,7 +1,7 @@
 /**
  * Gauss-Jordan Elimination Program
  * Performs the algorithmic process of Gauss-Jordan Elimination
- *To yield a given matrix's reduced row echelon form
+ * To yield a given matrix's reduced row echelon form
  * @author amartorajaram
  *
  */
@@ -15,7 +15,7 @@ public class GaussJordan
 	public GaussJordan(int rows, int columns)
 	{
 		matrix = new int [rows] [columns];
-		//fill matrix
+		
 		
 		//for testing purposes, use a matrix:
 		//int[][] matrix = new int[][] {{0,2,1,-1},{0,0,3,1},{0,0,0,0}};
