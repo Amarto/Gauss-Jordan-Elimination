@@ -30,8 +30,8 @@ public class GaussJordanTest
 				+ " one by one");
 			for (int k = 0; k < columns; k++)
 			{
-			double value = in.nextDouble();
-			aMatrix.setValue(l, k, value);
+				double value = in.nextDouble();
+				aMatrix.setValue(l, k, value);
 			}
 		}	
 		/**
@@ -58,27 +58,58 @@ public class GaussJordanTest
 			
 		}	
 		
+		for (int i = 0; i < rows; i++)
+		{	
+			for (int j = 0; j < columns; j++)
+			{
+				System.out.println(aMatrix.getValue(i, j));
+			}
+		}
 		
-//		/**
-//		 * Scan columns for first nonzero entry. Identify the column which contains it. 
-//		 * Look for the top nonzero entry in the column
-//		 * If it's not in the first row, swap rows
-//		 */
-//		//for (int i = 0; i < columns; i++)
-//		int i = 0;
-//		int j = 0;
-//		do
-//		{
-////			for (int j = 0; j < rows; j++)
-//			{
-//				if (aMatrix.getValue(j, i) != 0)
-//				{
-//					aMatrix.swap(1, j);
-//				}	
-//			}
-//			
+		
+		/**
+		 * Scan columns for first nonzero entry. Identify the column
+		 * which contains it. 
+		 * Look for the top nonzero entry in the column
+		 * Iterate through the loop and create an array ranking the rows
+		 * Swap the rows in another loop 
+		 * This should yield the rows in the correct order
+		 */
+
+		int counter = 0;
+		int[] ranking = new int[rows];
+		
+		for (int j = 0; j < columns; j++)
+		{
+			int k = 0;
+			do
+			{	
+				if (aMatrix.getValue(k, j) != 0)
+				{
+					ranking[counter] = k+1;
+					counter++;
+				}	
+				k++;
+			} while (k < rows && aMatrix.getValue(k, j) == 0); 
+		}
+		for (int i = 0; i < rows; i++)
+		{
+			aMatrix.swap(ranking[i]-1, i); //TODO figure out these indices
+		}
+		
+		for (int i = 0; i < rows; i++)
+		{	
+			for (int j = 0; j < columns; j++)
+			{
+				System.out.println(aMatrix.getValue(i, j));
+			}
+		}
+			
 //		} while (aMatrix.getValue(j, i) != 0);
-//		
+		
+		//TODO this does it once. I need to do it for every row, 
+		//but ignoring the previous column.
+		
 //		/**
 //		 * Then, make sure that the leftmost nonzero entry is a 1
 //		 * (leading 1)	
@@ -104,13 +135,10 @@ public class GaussJordanTest
 		/**
 		 * Then ensure that each *column* containing a leading 1 
 		 * has only zeroes in its other entries
+		 * Subtracting multiples of rows from other rows 
+		 * This should yield the rref matrix
 		 */
-			
-		/**
-		 * Then ensure that the leading 1 in any row is to the left of the
-		 * leading 1's below it	
-		 */
-		
+	
 			
 			
 			
