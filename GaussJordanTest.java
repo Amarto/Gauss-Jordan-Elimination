@@ -34,37 +34,7 @@ public class GaussJordanTest
 				aMatrix.setValue(l, k, value);
 			}
 		}	
-		/**
-		 * First, check for rows with all zeroes
-		 * and move them to the bottom
-		 * by swapping with the last row
-		 */
-		for (int l = 0; l < rows; l++)
-		{	
-			int zeroCounter = 0;
-			for (int k = 0; k < columns; k++)
-			{	
-				
-				if (aMatrix.getValue(l, k) == 0)
-				{
-					zeroCounter++;
-				}
-			}	
-			if (zeroCounter == columns)
-			{
-				aMatrix.swap(l, rows-1);
-			}
-			zeroCounter = 0;
-			
-		}	
 		
-		for (int i = 0; i < rows; i++)
-		{	
-			for (int j = 0; j < columns; j++)
-			{
-				System.out.println(aMatrix.getValue(i, j));
-			}
-		}
 		
 		
 		/**
@@ -92,10 +62,42 @@ public class GaussJordanTest
 				k++;
 			} while (k < rows && aMatrix.getValue(k, j) == 0); 
 		}
-		for (int i = 0; i < rows; i++)
+		for (int i = 1; i < rows; i++)
 		{
-			aMatrix.swap(ranking[i]-1, i); //TODO figure out these indices
+			aMatrix.swap(ranking[i], i); //TODO figure out these indices
 		}
+		
+		for (int i = 0; i < rows; i++)
+		{	
+			for (int j = 0; j < columns; j++)
+			{
+				System.out.println(aMatrix.getValue(i, j));
+			}
+		}
+		
+		/**
+		 * Check for rows with all zeroes
+		 * and move them to the bottom
+		 * by swapping with the last row
+		 */
+		for (int l = 0; l < rows; l++)
+		{	
+			int zeroCounter = 0;
+			for (int k = 0; k < columns; k++)
+			{	
+				
+				if (aMatrix.getValue(l, k) == 0)
+				{
+					zeroCounter++;
+				}
+			}	
+			if (zeroCounter == columns)
+			{
+				aMatrix.swap(l, rows-1);
+			}
+			zeroCounter = 0;
+			
+		}	
 		
 		for (int i = 0; i < rows; i++)
 		{	
