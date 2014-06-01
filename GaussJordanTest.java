@@ -30,7 +30,7 @@ public class GaussJordanTest
 				+ " one by one");
 			for (int k = 0; k < columns; k++)
 			{
-			int value = in.nextInt();
+			double value = in.nextDouble();
 			aMatrix.setValue(l, k, value);
 			}
 		}	
@@ -49,13 +49,15 @@ public class GaussJordanTest
 				{
 					zeroCounter++;
 				}
-				if (zeroCounter == columns)
-				{
-					aMatrix.swap(l, rows);
-				}
-				zeroCounter = 0;
+			}	
+			if (zeroCounter == columns)
+			{
+				aMatrix.swap(l, rows);
 			}
+			zeroCounter = 0;
+			
 		}	
+		
 		
 		/**
 		 * Then, make sure that the leftmost nonzero entry is a 1

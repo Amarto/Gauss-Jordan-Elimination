@@ -40,7 +40,7 @@ public class AugmentedMatrix
 	 * @param row, the row to be multiplied
 	 * @param scalar, the number by which the row is multiplied
 	 */
-	public void mult( int row, int scalar)
+	public void mult( int row, double scalar)
 	{
 		for (int i = 0; i < matrix[row].length; i++)
 		{
@@ -75,7 +75,7 @@ public class AugmentedMatrix
 	 * @param b the column index to set value
 	 * @param value, the value to be set
 	 */
-	public void setValue(int a, int b, int value)
+	public void setValue(int a, int b, double value)
 	{
 		matrix[a][b] = value;
 	}
