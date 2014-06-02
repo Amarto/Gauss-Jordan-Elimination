@@ -53,7 +53,7 @@ public class AugmentedMatrix
 	 * @param row2, the row to be multiplied and added to the other
 	 * @param scalar, the number by which row2 is multiplied
 	 */
-	public void addTo(int row1, int row2, int scalar)
+	public void addTo(int row1, int row2, double scalar)
 	{
 	
 		for (int i = 0; i < matrix[row2].length; i++)

@@ -106,33 +106,26 @@ public class GaussJordanTest
 				System.out.println(aMatrix.getValue(i, j));
 			}
 		}
-			
-//		} while (aMatrix.getValue(j, i) != 0);
 		
-		//TODO this does it once. I need to do it for every row, 
-		//but ignoring the previous column.
+		/**
+		 * Then, make sure that the leftmost nonzero entry is a 1
+		 * (leading 1)	
+		 * If it is not, divide the row so that it is
+		 */
 		
-//		/**
-//		 * Then, make sure that the leftmost nonzero entry is a 1
-//		 * (leading 1)	
-//		 * If it is not, divide the row so that it is
-//		 */
-//		for (int l = 0; l < rows; l++)
-//		{
-//			int k = 0;
-//			double scalar;
-//			do
-//			{
-//				if (aMatrix.getValue(l,k) != 0 && aMatrix.getValue(l,k) != 1)
-//				{
-//					scalar = 1/aMatrix.getValue(l,k);
-//					aMatrix.mult(l, scalar);
-//				}	
-//				k++;	
-//			}	
-//			while (aMatrix.getValue(l,k) == 0);
-//		}	
-//			
+		for (int i = 0; i < rows; i++)
+		{
+			int j = 0;
+			do
+			{
+				if(aMatrix.getValue(i,j) != 0)
+				{
+					aMatrix.mult(i, 1/(aMatrix.getValue(i,j)));
+				}
+				j++;
+			} while (aMatrix.getValue(i,j) == 0);
+		}
+
 			
 		/**
 		 * Then ensure that each *column* containing a leading 1 
@@ -141,7 +134,22 @@ public class GaussJordanTest
 		 * This should yield the rref matrix
 		 */
 	
+		for(int i = 0; i < rows; i++)
+		{
+			int j = 0;
+			while (aMatrix.getValue(i,j) == 0)
+			{
+				j++;
+			}
+			for (int k = 0; k < rows; k++)
+			{
+				if ((aMatrix.getValue(k,j) != 0) && (k != i))
+				{
+					aMatrix.addTo(k, i, aMatrix.getValue(k,j));
+				}
+			}
 			
+		}
 			
 			
 		in.close();
