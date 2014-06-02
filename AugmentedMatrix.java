@@ -23,7 +23,6 @@ public class AugmentedMatrix
 	
 	/**
 	 * Swap the positions of two rows
-	 * @param aMatrix the matrix on which the operation is performed
 	 * @param row1, the first row to be swapped
 	 * @param row2, the second row to be swapped
 	 */
@@ -36,7 +35,6 @@ public class AugmentedMatrix
 	
 	/**
 	 * Multiply a row of the matrix by a given scalar
-	 * @param aMatrix, the matrix on which the operation is performed
 	 * @param row, the row to be multiplied
 	 * @param scalar, the number by which the row is multiplied
 	 */
@@ -51,7 +49,6 @@ public class AugmentedMatrix
 	
 	/**
 	 * Add a scalar multiple of one row to another
-	 * @param aMatrix, the matrix 
 	 * @param row1, the row to be added to
 	 * @param row2, the row to be multiplied and added to the other
 	 * @param scalar, the number by which row2 is multiplied
