@@ -67,13 +67,13 @@ public class GaussJordanTest
 			aMatrix.swap(ranking[i], i); //TODO figure out these indices
 		}
 		
-		for (int i = 0; i < rows; i++)
-		{	
-			for (int j = 0; j < columns; j++)
-			{
-				System.out.println(aMatrix.getValue(i, j));
-			}
-		}
+//		for (int i = 0; i < rows; i++)
+//		{	
+//			for (int j = 0; j < columns; j++)
+//			{
+//				System.out.println(aMatrix.getValue(i, j));
+//			}
+//		}
 		
 		/**
 		 * Check for rows with all zeroes
@@ -98,14 +98,14 @@ public class GaussJordanTest
 			zeroCounter = 0;
 			
 		}	
-		
-		for (int i = 0; i < rows; i++)
-		{	
-			for (int j = 0; j < columns; j++)
-			{
-				System.out.println(aMatrix.getValue(i, j));
-			}
-		}
+//		
+//		for (int i = 0; i < rows; i++)
+//		{	
+//			for (int j = 0; j < columns; j++)
+//			{
+//				System.out.println(aMatrix.getValue(i, j));
+//			}
+//		}
 		
 		/**
 		 * Then, make sure that the leftmost nonzero entry is a 1
@@ -123,7 +123,7 @@ public class GaussJordanTest
 					aMatrix.mult(i, 1/(aMatrix.getValue(i,j)));
 				}
 				j++;
-			} while (aMatrix.getValue(i,j) == 0);
+			} while (aMatrix.getValue(i,j) == 0);				//TODO figure out array index here
 		}
 
 			
