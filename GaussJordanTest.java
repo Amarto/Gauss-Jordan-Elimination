@@ -122,8 +122,11 @@ public class GaussJordanTest
 				{
 					aMatrix.mult(i, 1/(aMatrix.getValue(i,j)));
 				}
-				j++;
-			} while (aMatrix.getValue(i,j) == 0);				//TODO figure out array index here
+				else 
+				{
+					j++;
+				}
+			} while ((aMatrix.getValue(i,j) == 0) && (j < columns));
 		}
 
 			
@@ -137,7 +140,7 @@ public class GaussJordanTest
 		for(int i = 0; i < rows; i++)
 		{
 			int j = 0;
-			while (aMatrix.getValue(i,j) == 0)
+			while (aMatrix.getValue(i,j) == 0)	//TODO same index problem
 			{
 				j++;
 			}
