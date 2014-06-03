@@ -64,7 +64,7 @@ public class GaussJordanTest
 		}
 		for (int i = 1; i < rows; i++)
 		{
-			aMatrix.swap(ranking[i], i); //TODO figure out these indices
+			aMatrix.swap(ranking[i], i);
 		}
 		
 //		for (int i = 0; i < rows; i++)
@@ -126,7 +126,7 @@ public class GaussJordanTest
 				{
 					j++;
 				}
-			} while ((aMatrix.getValue(i,j) == 0) && (j < columns));
+			} while ((aMatrix.getValue(i,j) == 0) && (j < columns)); //TODO index problem here
 		}
 
 			
