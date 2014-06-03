@@ -16,7 +16,6 @@ public class AugmentedMatrix
 	{
 		matrix = new double [rows] [columns];
 		
-		
 		//for testing purposes, use a matrix:
 		//int[][] matrix = new int[][] {{0,2,1,-1},{0,0,3,1},{0,0,0,0}};
 	}
