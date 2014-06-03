@@ -116,8 +116,7 @@ public class GaussJordanTest
 		for (int i = 0; i < rows; i++)
 		{
 			int j = 0;
-			do
-			{
+
 				if(aMatrix.getValue(i,j) != 0)
 				{
 					aMatrix.mult(i, 1/(aMatrix.getValue(i,j)));
@@ -126,8 +125,16 @@ public class GaussJordanTest
 				{
 					j++;
 				}
-			} while ((aMatrix.getValue(i,j) == 0) && (j < columns)); //TODO index problem here
 		}
+		
+//		
+//		for (int i = 0; i < rows; i++)
+//		{	
+//			for (int j = 0; j < columns; j++)
+//			{
+//				System.out.println(aMatrix.getValue(i, j));
+//			}
+//		}
 
 			
 		/**
@@ -140,21 +147,24 @@ public class GaussJordanTest
 		for(int i = 0; i < rows; i++)
 		{
 			int j = 0;
-			while (aMatrix.getValue(i,j) == 0)	//TODO same index problem
+			if (aMatrix.getValue(i,j) == 0)	
 			{
 				j++;
 			}
-			for (int k = 0; k < rows; k++)
+			else 
 			{
-				if ((aMatrix.getValue(k,j) != 0) && (k != i))
+				for (int k = 0; k < rows; k++)
 				{
+					if ((aMatrix.getValue(k,j) != 0) && (k != i))
+					{
 					aMatrix.addTo(k, i, aMatrix.getValue(k,j));
+					}
 				}
 			}
 			
 		}
-			
-			
+		
+						
 		in.close();
 		
 	}
