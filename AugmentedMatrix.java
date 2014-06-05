@@ -7,6 +7,7 @@
  */
 public class AugmentedMatrix 
 {
+	double[][] matrix;
 	/**
 	 * Constructs a matrix of a given size
 	 * @param rows, number of rows of the matrix
@@ -87,6 +88,6 @@ public class AugmentedMatrix
 		return matrix[a][b];
 	}
 	
-	double[][] matrix;
+
 
 }
