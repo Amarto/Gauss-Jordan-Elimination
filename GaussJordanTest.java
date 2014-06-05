@@ -34,7 +34,13 @@ public class GaussJordanTest
 				aMatrix.setValue(l, k, value);
 			}
 		}	
-		
+		System.out.println("Initial Matrix: ");
+		for (int i =0; i < rows; i++) { 
+			for (int j = 0; j < columns; j++) { 
+			System.out.print(" " + aMatrix.getValue(i, j)); 
+			} 
+			System.out.println(""); 
+			} 
 		
 		
 		/**
@@ -45,7 +51,7 @@ public class GaussJordanTest
 		 * Swap the rows in another loop 
 		 * This should yield the rows in the correct order
 		 */
-
+//TODO ranking is backwards currently
 		int counter = 0;
 		int[] ranking = new int[rows];
 		
@@ -53,27 +59,29 @@ public class GaussJordanTest
 		{
 			int k = 0;
 			do
-			{	
+			{
+
 				if (aMatrix.getValue(k, j) != 0)
 				{
-					ranking[counter] = k+1;
+					ranking[counter] = k; 
 					counter++;
 				}	
 				k++;
 			} while (k < rows && aMatrix.getValue(k, j) == 0); 
+			
 		}
 		for (int i = 1; i < rows; i++)
 		{
 			aMatrix.swap(ranking[i], i);
 		}
 		
-//		for (int i = 0; i < rows; i++)
-//		{	
-//			for (int j = 0; j < columns; j++)
-//			{
-//				System.out.println(aMatrix.getValue(i, j));
-//			}
-//		}
+		System.out.println("After ranking: ");
+		for (int i =0; i < rows; i++) { 
+			for (int j = 0; j < columns; j++) { 
+			System.out.print(" " + aMatrix.getValue(i, j)); 
+			} 
+			System.out.println(""); 
+			} 
 		
 		/**
 		 * Check for rows with all zeroes
@@ -98,14 +106,14 @@ public class GaussJordanTest
 			zeroCounter = 0;
 			
 		}	
-//		
-//		for (int i = 0; i < rows; i++)
-//		{	
-//			for (int j = 0; j < columns; j++)
-//			{
-//				System.out.println(aMatrix.getValue(i, j));
-//			}
-//		}
+		
+		System.out.println("After zero swap: ");
+		for (int i =0; i < rows; i++) { 
+			for (int j = 0; j < columns; j++) { 
+			System.out.print(" " + aMatrix.getValue(i, j)); 
+			} 
+			System.out.println(""); 
+			} 
 		
 		/**
 		 * Then, make sure that the leftmost nonzero entry is a 1
@@ -126,15 +134,15 @@ public class GaussJordanTest
 					j++;
 				}
 		}
+
 		
-//		
-//		for (int i = 0; i < rows; i++)
-//		{	
-//			for (int j = 0; j < columns; j++)
-//			{
-//				System.out.println(aMatrix.getValue(i, j));
-//			}
-//		}
+		System.out.println("After dividing: ");
+		for (int i =0; i < rows; i++) { 
+			for (int j = 0; j < columns; j++) { 
+			System.out.print(" " + aMatrix.getValue(i, j)); 
+			} 
+			System.out.println(""); 
+			} 
 
 			
 		/**
@@ -163,6 +171,14 @@ public class GaussJordanTest
 			}
 			
 		}
+		System.out.println("After adding: ");
+		for (int i =0; i < rows; i++) { 
+			for (int j = 0; j < columns; j++) { 
+			System.out.print(" " + aMatrix.getValue(i, j)); 
+			} 
+			System.out.println(""); 
+			} 
+
 		
 						
 		in.close();
