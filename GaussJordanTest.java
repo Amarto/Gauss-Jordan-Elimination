@@ -43,143 +43,72 @@ public class GaussJordanTest
 			} 
 		
 		
-		/**
-		 * Scan columns for first nonzero entry. Identify the column
-		 * which contains it. 
-		 * Look for the top nonzero entry in the column
-		 * Iterate through the loop and create an array ranking the rows
-		 * Swap the rows in another loop 
-		 * This should yield the rows in the correct order
-		 */
-//TODO ranking is backwards currently
-		int counter = 0;
-		int[] ranking = new int[rows];
-		
-		for (int j = 0; j < columns; j++)
-		{
-			int k = 0;
-			do
-			{
 
-				if (aMatrix.getValue(k, j) != 0)
-				{
-					ranking[counter] = k; 
-					counter++;
-				}	
+
+		
+		int i = 1;
+		int j = 1;
+		while (i < rows && j < columns)
+		{
+			//search columns for nonzero entry in row i
+			int k = i;
+			while (k < rows && aMatrix.getValue(k,j) == 0)
+			{
 				k++;
-			} while (k < rows && aMatrix.getValue(k, j) == 0); 
-			
-		}
-		for (int i = 1; i < rows; i++)
-		{
-			aMatrix.swap(ranking[i], i);
-		}
-		
-		System.out.println("After ranking: ");
-		for (int i =0; i < rows; i++) { 
-			for (int j = 0; j < columns; j++) { 
-			System.out.print(" " + aMatrix.getValue(i, j)); 
-			} 
-			System.out.println(""); 
-			} 
-		
-		/**
-		 * Check for rows with all zeroes
-		 * and move them to the bottom
-		 * by swapping with the last row
-		 */
-		for (int l = 0; l < rows; l++)
-		{	
-			int zeroCounter = 0;
-			for (int k = 0; k < columns; k++)
-			{	
-				
-				if (aMatrix.getValue(l, k) == 0)
-				{
-					zeroCounter++;
-				}
-			}	
-			if (zeroCounter == columns)
-			{
-				aMatrix.swap(l, rows-1);
 			}
-			zeroCounter = 0;
 			
-		}	
-		
-		System.out.println("After zero swap: ");
-		for (int i =0; i < rows; i++) { 
-			for (int j = 0; j < columns; j++) { 
-			System.out.print(" " + aMatrix.getValue(i, j)); 
-			} 
-			System.out.println(""); 
-			} 
-		
-		/**
-		 * Then, make sure that the leftmost nonzero entry is a 1
-		 * (leading 1)	
-		 * If it is not, divide the row so that it is
-		 */
-		
-		for (int i = 0; i < rows; i++)
-		{
-			int j = 0;
-
-				if(aMatrix.getValue(i,j) != 0)
-				{
-					aMatrix.mult(i, 1/(aMatrix.getValue(i,j)));
-				}
-				else 
-				{
-					j++;
-				}
-		}
-
-		
-		System.out.println("After dividing: ");
-		for (int i =0; i < rows; i++) { 
-			for (int j = 0; j < columns; j++) { 
-			System.out.print(" " + aMatrix.getValue(i, j)); 
-			} 
-			System.out.println(""); 
-			} 
-
+			if (k < rows)
+			{
 			
-		/**
-		 * Then ensure that each *column* containing a leading 1 
-		 * has only zeroes in its other entries
-		 * Subtracting multiples of rows from other rows 
-		 * This should yield the rref matrix
-		 */
-	
-		for(int i = 0; i < rows; i++)
-		{
-			int j = 0;
-			if (aMatrix.getValue(i,j) == 0)	
-			{
-				j++;
-			}
-			else 
-			{
-				for (int k = 0; k < rows; k++)
+				if (aMatrix.getValue(k,j) != 0)
 				{
-					if ((aMatrix.getValue(k,j) != 0) && (k != i))
+					//if k is not equal to i, swap rows 
+					if (k != i)
 					{
-					aMatrix.addTo(k, i, aMatrix.getValue(k,j));
+						aMatrix.swap(k, i);
 					}
+				
+					//if the value of the leading number is not one, divide row so it is
+					if (aMatrix.getValue(i,j) != 1)
+					{
+						aMatrix.mult(i, 1/aMatrix.getValue(i,j));
+					}
+				
+					for (int m = 0; m < rows; m++)
+					{
+						if (m != i)
+						{
+							aMatrix.addTo(m, i, -1*(aMatrix.getValue(m,j)));
+						}
+						
+					}
+				
+				
 				}
+				i++;
 			}
+			j++;
 			
+			
+			
+			//if nonzero entry is found at row k
+			
+			//if k is not equal to i, then swap i with k
+			
+			//if value at (i,j) is not one, divide by one over value
+			
+			//subtract from each row other than i an appropriate multiple of i
+			//to eliminate all other nonzero entries from column j
 		}
-		System.out.println("After adding: ");
-		for (int i =0; i < rows; i++) { 
-			for (int j = 0; j < columns; j++) { 
-			System.out.print(" " + aMatrix.getValue(i, j)); 
+		System.out.println("Rref Matrix: ");
+		for (int q =0; q < rows; q++) { 
+			for (int a = 0; a < columns; a++) { 
+			System.out.print(" " + aMatrix.getValue(q, a)); 
 			} 
 			System.out.println(""); 
 			} 
-
 		
+
 						
 		in.close();
 		
