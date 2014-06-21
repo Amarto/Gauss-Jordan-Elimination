@@ -46,8 +46,8 @@ public class GaussJordanTest
 
 
 		
-		int i = 1;
-		int j = 1;
+		int i = 0;
+		int j = 0;
 		while (i < rows && j < columns)
 		{
 			//search columns for nonzero entry in row i
@@ -65,23 +65,29 @@ public class GaussJordanTest
 					//if k is not equal to i, swap rows 
 					if (k != i)
 					{
-						aMatrix.swap(k, i);
+						aMatrix.swap(i, k);
 					}
+					
+
 				
 					//if the value of the leading number is not one, divide row so it is
 					if (aMatrix.getValue(i,j) != 1)
 					{
-						aMatrix.mult(i, 1/aMatrix.getValue(i,j));
+						aMatrix.divide(i, aMatrix.getValue(i,j));
 					}
 				
+
+
+					
 					for (int m = 0; m < rows; m++)
 					{
-						if (m != i)
+						if (m != i && aMatrix.getValue(m,j) != 0)
 						{
-							aMatrix.addTo(m, i, -1*(aMatrix.getValue(m,j)));
+							aMatrix.subtractRow(m, i, (aMatrix.getValue(m,j)));
 						}
 						
 					}
+
 				
 				
 				}

@@ -34,15 +34,15 @@ public class AugmentedMatrix
 	}
 	
 	/**
-	 * Multiply a row of the matrix by a given scalar
-	 * @param row, the row to be multiplied
-	 * @param scalar, the number by which the row is multiplied
+	 * Divide a row of the matrix by a given scalar
+	 * @param row, the row to be divided
+	 * @param scalar, the number by which the row is divided
 	 */
-	public void mult( int row, double scalar)
+	public void divide( int row, double scalar)
 	{
 		for (int i = 0; i < matrix[row].length; i++)
 		{
-			matrix[row][i] = scalar * matrix[row][i];
+			matrix[row][i] = (1/scalar) * matrix[row][i];
 		}
 		
 	}
@@ -53,17 +53,17 @@ public class AugmentedMatrix
 	 * @param row2, the row to be multiplied and added to the other
 	 * @param scalar, the number by which row2 is multiplied
 	 */
-	public void addTo(int row1, int row2, double scalar)
+	public void subtractRow(int row1, int row2, double scalar)
 	{
 	
-		for (int i = 0; i < matrix[row2].length; i++)
-		{
-			matrix[row2][i] = scalar * matrix[row2][i];
-		}
+//		for (int i = 0; i < matrix[row2].length; i++)
+//		{
+//			matrix[row2][i] = scalar * matrix[row2][i];
+//		}
 		
 		for (int i = 0; i < matrix[row1].length; i++)
 		{
-			matrix[row1][i] += matrix[row2][i];
+			matrix[row1][i] -=  scalar* matrix[row2][i];
 		}
 	}
 	/**
