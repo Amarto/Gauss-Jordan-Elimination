@@ -78,7 +78,8 @@ public class GaussJordanTest
 				
 
 
-					
+					//for all other rows, subtract multiples of given row until all other entries
+					//in the column are zero
 					for (int m = 0; m < rows; m++)
 					{
 						if (m != i && aMatrix.getValue(m,j) != 0)
@@ -97,15 +98,20 @@ public class GaussJordanTest
 			
 			
 			
-			//if nonzero entry is found at row k
-			
-			//if k is not equal to i, then swap i with k
-			
-			//if value at (i,j) is not one, divide by one over value
-			
-			//subtract from each row other than i an appropriate multiple of i
-			//to eliminate all other nonzero entries from column j
+
 		}
+		
+		for (int l = 0; l < rows; l++)
+		{
+		
+			for (int k = 0; k < columns; k++)
+			{
+				if (aMatrix.getValue(l,k) == -0.0)
+					
+				aMatrix.setValue(l,k, 0.0);
+			}
+		}
+		
 		System.out.println("Rref Matrix: ");
 		for (int q =0; q < rows; q++) { 
 			for (int a = 0; a < columns; a++) { 
