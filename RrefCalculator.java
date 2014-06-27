@@ -3,10 +3,17 @@
  * Takes in the matrix and outputs its reduced row echelon form
  * @author amartorajaram
  */
-public class RrefCalculator {
+public class RrefCalculator 
+{
 	
-	
-	public void calculateRref(int rows, int columns, Matrix aMatrix)
+	/**
+	 * Calculates the reduced row echelon form of a matrix 
+	 * given rows and columns and the matrix
+	 * @param rows
+	 * @param columns
+	 * @param aMatrix
+	 */
+	public Matrix calculateRref(int rows, int columns, Matrix aMatrix)
 	{
 		int swapcounter = 0;
 		int dividecounter = 0;
@@ -36,9 +43,7 @@ public class RrefCalculator {
 						aMatrix.swap(i, k);
 						swapcounter ++;
 					}
-					
-
-				
+		
 					//if the value of the leading number is not one, divide row so it is
 					if (aMatrix.getValue(i,j) != 1)
 					{
@@ -47,8 +52,6 @@ public class RrefCalculator {
 						determinantscalar *= (1/aMatrix.getValue(i,j));	//TODO this is broken
 					}
 				
-
-
 					//for all other rows, subtract multiples of given row until all other entries
 					//in the column are zero
 					for (int m = 0; m < rows; m++)
@@ -57,20 +60,12 @@ public class RrefCalculator {
 						{
 							aMatrix.subtractRow(m, i, (aMatrix.getValue(m,j)));
 							addcounter++;
-						}
-						
-					}
-
-				
-				
+						}			
+					}		
 				}
 				i++;
 			}
 			j++;
-			
-			
-			
-
 		}
 			
 			for (int l = 0; l < rows; l++)
@@ -106,11 +101,15 @@ public class RrefCalculator {
 			
 				
 			} 
+			if (aMatrix.isSquare(rows, columns))
+			{
 			System.out.println("Swaps: " +swapcounter + '\n' + "Divisions: " 
 					+ dividecounter+ '\n' + "Division Scalar: " + determinantscalar + '\n' + "Adds: " + addcounter);
 					System.out.println("Determinant of Rref: " + determinantRref); 
 					System.out.println("Determinant of Original: " + originalDeterminant);
+			}
 			
+			return aMatrix;
 		}
 
 	
