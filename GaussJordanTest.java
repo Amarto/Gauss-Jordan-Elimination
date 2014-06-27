@@ -3,6 +3,7 @@
  * @author amartorajaram
  *
  */
+import java.util.ArrayList;
 import java.util.Scanner;
 public class GaussJordanTest 
 {
@@ -45,7 +46,12 @@ public class GaussJordanTest
 		
 
 
-		
+		int swapcounter = 0;
+		int dividecounter = 0;
+		int addcounter = 0;
+		int determinantscalar = 1;
+		double determinantRref = 1;
+		double originalDeterminant = 1;
 		int i = 0;
 		int j = 0;
 		while (i < rows && j < columns)
@@ -66,6 +72,7 @@ public class GaussJordanTest
 					if (k != i)
 					{
 						aMatrix.swap(i, k);
+						swapcounter ++;
 					}
 					
 
@@ -74,6 +81,8 @@ public class GaussJordanTest
 					if (aMatrix.getValue(i,j) != 1)
 					{
 						aMatrix.divide(i, aMatrix.getValue(i,j));
+						dividecounter++;
+						determinantscalar *= (1/aMatrix.getValue(i,j));	//TODO this is broken
 					}
 				
 
@@ -85,6 +94,7 @@ public class GaussJordanTest
 						if (m != i && aMatrix.getValue(m,j) != 0)
 						{
 							aMatrix.subtractRow(m, i, (aMatrix.getValue(m,j)));
+							addcounter++;
 						}
 						
 					}
@@ -112,18 +122,38 @@ public class GaussJordanTest
 			}
 		}
 		
+		if (aMatrix.isSquare(rows, columns))
+		{	
+			for (int q = 0; q < rows; q++)
+			{
+			determinantRref *= aMatrix.getValue(q, q);
+			}
+				
+		originalDeterminant = (Math.pow(-1, swapcounter)) * determinantscalar *
+				determinantRref;
+		}
+		
 		System.out.println("Rref Matrix: ");
-		for (int q =0; q < rows; q++) { 
-			for (int a = 0; a < columns; a++) { 
+		for (int q =0; q < rows; q++) 
+		{ 
+			for (int a = 0; a < columns; a++) 
+			{ 
 			System.out.print(" " + aMatrix.getValue(q, a)); 
 			} 
 			System.out.println(""); 
-			} 
+		
+			
+		} 
+		System.out.println("Swaps: " +swapcounter + '\n' + "Divisions: " 
+				+ dividecounter+ '\n' + "Division Scalar: " + determinantscalar + '\n' + "Adds: " + addcounter);
+				System.out.println("Determinant of Rref: " + determinantRref); 
+				System.out.println("Determinant of Original: " + originalDeterminant);
 		
 
 						
 		in.close();
 		
 	}
+	
 	
 }

@@ -90,4 +90,15 @@ public class AugmentedMatrix
 	
 
 
+	public boolean isSquare(int rows, int columns) {
+		if (rows == columns)
+		{
+		return true;
+		}
+	
+		return false;
+	}
+	
+
+
 }
