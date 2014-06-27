@@ -49,7 +49,7 @@ public class GaussJordanTest
 		int swapcounter = 0;
 		int dividecounter = 0;
 		int addcounter = 0;
-		int determinantscalar = 1;
+		double determinantscalar = 1;
 		double determinantRref = 1;
 		double originalDeterminant = 1;
 		int i = 0;
