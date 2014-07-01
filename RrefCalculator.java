@@ -18,7 +18,7 @@ public class RrefCalculator
 		int swapcounter = 0;
 		int dividecounter = 0;
 		int addcounter = 0;
-		double determinantscalar = 1;
+		double divisionscalar = 1;
 		double determinantRref = 1;
 		double originalDeterminant = 1;
 		int i = 0;
@@ -47,9 +47,12 @@ public class RrefCalculator
 					//if the value of the leading number is not one, divide row so it is
 					if (aMatrix.getValue(i,j) != 1)
 					{
-						aMatrix.divide(i, aMatrix.getValue(i,j));
+						divisionscalar *= (aMatrix.getValue(i,j));
 						dividecounter++;
-						determinantscalar *= (aMatrix.getValue(i,j));	//TODO this is broken
+						aMatrix.divide(i, aMatrix.getValue(i,j));
+						
+							//TODO this is broken
+						System.out.println("Division Scalar =" + divisionscalar);
 					}
 				
 					//for all other rows, subtract multiples of given row until all other entries
@@ -86,7 +89,7 @@ public class RrefCalculator
 				determinantRref *= aMatrix.getValue(q, q);
 				}
 					
-			originalDeterminant = (Math.pow(-1, swapcounter)) * determinantscalar *
+			originalDeterminant = (Math.pow(-1, swapcounter)) * divisionscalar *
 					determinantRref;
 			}
 			
@@ -104,7 +107,7 @@ public class RrefCalculator
 			if (aMatrix.isSquare(rows, columns))
 			{
 			System.out.println("Swaps: " +swapcounter + '\n' + "Divisions: " 
-					+ dividecounter+ '\n' + "Division Scalar: " + determinantscalar + '\n' + "Adds: " + addcounter);
+					+ dividecounter+ '\n' + "Division Scalar: " + divisionscalar + '\n' + "Adds: " + addcounter);
 					System.out.println("Determinant of Rref: " + determinantRref); 
 					System.out.println("Determinant of Original: " + originalDeterminant);
 			}
