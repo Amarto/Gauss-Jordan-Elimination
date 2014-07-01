@@ -49,7 +49,7 @@ public class RrefCalculator
 					{
 						aMatrix.divide(i, aMatrix.getValue(i,j));
 						dividecounter++;
-						determinantscalar *= (1/aMatrix.getValue(i,j));	//TODO this is broken
+						determinantscalar *= (aMatrix.getValue(i,j));	//TODO this is broken
 					}
 				
 					//for all other rows, subtract multiples of given row until all other entries
