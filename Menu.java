@@ -2,11 +2,15 @@
 public class Menu 
 {
 
-    System.out.println("   MENU SELECTION DEMO    ");
-    System.out.println("==========================");
-    System.out.println(" Options:                 ");
-    System.out.println("        1. Option 1       ");
-    System.out.println("        2. Option 2       ");
-    System.out.println("        3. Exit           ");
+	public void printmenu()
+	{
+    System.out.println("   MATRIX OPERATIONS                ");
+    System.out.println("====================================");
+    System.out.println(" Options:                           ");
+    System.out.println("        1. Calculate Rref           ");
+    System.out.println("        2. Multiply Matrix by Scalar");
+    System.out.println("        3. Multiply Two Matrices    ");
+    System.out.println("        4. Matrix Inverse           ");
+	}
 
 }

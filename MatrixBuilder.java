@@ -9,6 +9,8 @@ import java.util.Scanner;
 public class MatrixBuilder 
 {
 
+	int rows;
+	int columns;
 	
 
 	/**
@@ -16,9 +18,13 @@ public class MatrixBuilder
 	 * @param rows, number of rows of the matrix
 	 * @param columns, number of columns of the matrix
 	 */
-	public Matrix buildMatrix(int rows, int columns)
+	public Matrix buildMatrix()
 	{
 		Scanner in = new Scanner(System.in);
+		System.out.println("Please enter the number of rows: ");
+		rows = in.nextInt();
+		System.out.println("Please enter the number of columns: ");
+		columns = in.nextInt();
 		Matrix aMatrix = new Matrix(rows, columns);
 		
 		/**
@@ -41,11 +47,21 @@ public class MatrixBuilder
 			} 
 			System.out.println(""); 
 			} 
-		
-		//maybe this part should go in the test class
 		in.close();
 		return aMatrix;
 	}
+	
+	public int getRows()
+	{
+		return rows;
+	}
+	
+	public int getColumns()
+	{
+		return columns;
+	}
+	
+
 	
 	
 
