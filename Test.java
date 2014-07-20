@@ -6,15 +6,16 @@ public class Test {
 		
 		System.out.println("Welcome to Amarto's Matrix Operations Calculator!");
 		Menu menu = new Menu();
-		menu.printmenu();
+		menu.printMenu();
+		menu.promptResponse();
 		
-		MatrixBuilder builder = new MatrixBuilder();
-		
-
-		
-		Matrix thisMatrix = builder.buildMatrix();
-		RrefCalculator rrefcalc = new RrefCalculator();
-		rrefcalc.calculateRref(builder.getRows(), builder.getColumns(), thisMatrix);  
+//		MatrixBuilder builder = new MatrixBuilder();
+//		
+//
+//		
+//		Matrix thisMatrix = builder.buildMatrix();
+//		RrefCalculator rrefcalc = new RrefCalculator();
+//		rrefcalc.calculateRref(builder.getRows(), builder.getColumns(), thisMatrix);  
 		
 		
 

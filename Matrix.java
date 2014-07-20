@@ -35,11 +35,20 @@ public class Matrix
 	 * @param row, the row to be divided
 	 * @param scalar, the number by which the row is divided
 	 */
-	public void divide( int row, double scalar)
+	public void divide(int row, double scalar)
 	{
 		for (int i = 0; i < matrix[row].length; i++)
 		{
 			matrix[row][i] = (1/scalar) * matrix[row][i];
+		}
+		
+	}
+	
+	public void multiply(int row, double scalar)
+	{
+		for (int i = 0; i < matrix[row].length; i++)
+		{
+			matrix[row][i] = (scalar) * matrix[row][i];
 		}
 		
 	}
