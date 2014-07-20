@@ -50,9 +50,6 @@ public class RrefCalculator
 						divisionscalar *= (aMatrix.getValue(i,j));
 						dividecounter++;
 						aMatrix.divide(i, aMatrix.getValue(i,j));
-						
-							//TODO this is broken
-						System.out.println("Division Scalar =" + divisionscalar);
 					}
 				
 					//for all other rows, subtract multiples of given row until all other entries
