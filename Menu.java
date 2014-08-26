@@ -1,6 +1,10 @@
 import java.util.Scanner;
 public class Menu 
 {
+	public static final int RREF_CALC = 1;
+	public static final int SCALAR_MULT = 2;
+	public static final int MATRIX_MULT = 3;
+	public static final int MATRIX_INV = 4;
 	Scanner in = new Scanner(System.in);
 
 	public void printMenu()
@@ -18,25 +22,40 @@ public class Menu
 	{
 		System.out.println("Please enter your selection: ");
 		int selection = in.nextInt();
-		if (selection == 1)
+		MatrixBuilder builder = new MatrixBuilder();
+		if (selection == RREF_CALC)
 		{
-			MatrixBuilder builder = new MatrixBuilder();
+			
 			Matrix thisMatrix = builder.buildMatrix();
 			RrefCalculator rrefcalc = new RrefCalculator();
 			rrefcalc.calculateRref(builder.getRows(), builder.getColumns(), thisMatrix);  
 		}
 		
-		else if (selection == 2)
+		else if (selection == SCALAR_MULT)
 		{
-			MatrixBuilder builder = new MatrixBuilder();
+			
 			Matrix thisMatrix = builder.buildMatrix();
 			ScalarMultCalculator scalarcalc = new ScalarMultCalculator();
-			scalarcalc.calculateScalarMult(builder.getRows(), thisMatrix);
+			System.out.println("Please enter the scalar: ");
+			double scalar = in.nextDouble();
+			scalarcalc.calculateScalarMult(builder.getRows(), thisMatrix, scalar);
 		}
 		
-		else if (selection == 3)
+		else if (selection == MATRIX_MULT)
 		{
+			Matrix firstMatrix = builder.buildMatrix();
+			int firstMatrixColumns = builder.columns;
+			Matrix secondMatrix = builder.buildMatrix();
+			int secondMatrixRows = builder.rows;
+			
+			MatrixMultCalculator matrixmultcalc = new MatrixMultCalculator();
+			if (matrixmultcalc.isValid(firstMatrixColumns, secondMatrixRows))
+			{
+				matrixmultcalc.multMatrix(firstMatrix, secondMatrix);
+			}
+				
 			//...
+			
 		}
 	}
 

@@ -11,6 +11,7 @@ public class MatrixBuilder
 
 	int rows;
 	int columns;
+	Scanner in = new Scanner(System.in);
 	
 
 	/**
@@ -20,7 +21,7 @@ public class MatrixBuilder
 	 */
 	public Matrix buildMatrix()
 	{
-		Scanner in = new Scanner(System.in);
+		
 		System.out.println("Please enter the number of rows: ");
 		rows = in.nextInt();
 		System.out.println("Please enter the number of columns: ");
@@ -43,13 +44,23 @@ public class MatrixBuilder
 		System.out.println("Initial Matrix: ");
 		for (int i =0; i < rows; i++) { 
 			for (int j = 0; j < columns; j++) { 
-			System.out.print(" " + aMatrix.getValue(i, j)); 
+				System.out.print(" " + aMatrix.getValue(i, j)); 
 			} 
 			System.out.println(""); 
-			} 
+		} 
 		in.close();
 		return aMatrix;
 	}
+	
+//	public Matrix buildScalar()
+//	{
+//		Matrix theMatrix = new Matrix(1, 1);
+//		System.out.println("Please enter the scalar: ");
+//		double value = in.nextDouble();
+//		theMatrix.setValue(1, 1, value);
+//		
+//		return theMatrix;
+//	}
 	
 	public int getRows()
 	{
